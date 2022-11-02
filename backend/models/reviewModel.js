@@ -1,6 +1,12 @@
 const mongoose = require('mongoose')
 
-const reviewSchema = mongoose.Schema({
+const reviewSchema = mongoose.Schema(
+    {
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: true,
+        ref: 'User' 
+    },
     text: {
         type: String,
         required: [true, 'kindly add a text value']
