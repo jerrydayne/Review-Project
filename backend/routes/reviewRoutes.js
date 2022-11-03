@@ -7,8 +7,10 @@ const {
     deleteReview 
 } = require('../controllers/reviewController')
 
-router.route('/').get(getReviews).post(createReview)
-router.route('/:id').put(updateReview).delete(deleteReview)
+const { protect } = require('../middleware/authMiddleware')
+
+router.route('/').get(protect, getReviews).post(protect, createReview)
+router.route('/:id').put(protect, updateReview).delete(protect, deleteReview)
 
 
 module.exports = router
